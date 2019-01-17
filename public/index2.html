@@ -1,0 +1,325 @@
+<form
+  id="form1"
+  name="addtext"
+  action="http://localhost:5501/submit-form"
+  method="POST"
+>
+  <div class="form-group row">
+    <label for="name" class="col-sm-2 col-form-label" name="name"
+      >Application Name</label
+    >
+    <div class="col-sm-2">
+      <input type="name" class="form-control" id="name" placeholder="Name" />
+    </div>
+    <div class="col-sm-2">
+      <button
+        id="run_job"
+        type="button"
+        class="btn button2 btn-md btn-secondary"
+        ng-click="clicked()"
+        name="runjob"
+        action="/runJob"
+        method="POST"
+      >
+        Run Job
+      </button>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="data" class="col-sm-2 col-form-label" name="data"
+      >Data Source</label
+    >
+    <div class="col-sm-2">
+      <select class="form-control" id="data">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+      </select>
+    </div>
+    <div class="col-sm-2">
+      <button
+        type="submit"
+        class="btn button2 btn-md btn-secondary"
+        id="inputFileNameToSaveAs"
+      >
+        Export
+      </button>
+    </div>
+  </div>
+
+  <!-- onclick="createJSON()" -->
+  <div class="container" id="myHeader">
+    <div class="form-group col">
+      <button
+        type="button"
+        class="btn button1 btn-md btn-secondary"
+        data-toggle="modal"
+        data-target="#myModal"
+        onclick="console.log(this)"
+      >
+        Import
+      </button>
+
+      <div
+        class="modal fade"
+        id="myModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModal"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                X
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <p>Browse for Files</p>
+                  <input
+                    type="file"
+                    id="fileToLoad"
+                    onchange="openFile(event)"
+                  />
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-default"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-lg-8 rep">
+        <hr />
+        <textarea
+          class="form-control"
+          id="inputTextToSave"
+          rows="5"
+          onfocus="if(this.value==this.defaultValue)this.value='';"
+          onblur="if(this.value=='')this.value=this.defaultValue;"
+        >
+Enter HQL here..</textarea
+        >
+        <br />
+        <div class="form-row">
+          <div class=".form-group col-md-2">
+            <label for="destination" name="destination">Destination</label>
+            <select class="form-control" id="destination">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="table" name="table">Table</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputName"
+              id="table"
+              placeholder="Table Name"
+            />
+          </div>
+          <div class="form-group col-md-3">
+            <label for="database" name="database">DB Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputName1"
+              id="database"
+              placeholder="Database"
+            />
+          </div>
+          <div class="form-group col-md-3">
+            <label for="mode">Mode</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputName2"
+              id="mode"
+              placeholder="Mode"
+            />
+          </div>
+        </div>
+        <br />
+        <button type="submit" class="btn button5 btn-md btn-secondary">
+          Cancel
+        </button>
+        <button
+          type="submit"
+          id="submit"
+          class="btn button3 btn-md btn-secondary"
+        >
+          Save
+        </button>
+        <p>
+          <input
+            type="button"
+            id="button1"
+            class="btn btn-md btn-secondary"
+            value="Add"
+          />
+        </p>
+      </div>
+      <br />
+    </div>
+  </div>
+</form>
+
+<div id="myNav" class="overlay">
+  <!-- <i class="fa fa-elementor"></i> -->
+  <!-- <span style="font-size:50px; color:white; float:right;"><i class="fa fa-bars" style="font-size:30px; cursor:pointer" onclick="openNav()"></i></span> -->
+  <button class="btn btn-primary float-right" onclick="toggleMenu()">
+    <i
+      class="fa fa-bars"
+      style="font-size:20px; cursor:pointer; padding-top: 20px;"
+    ></i>
+  </button>
+  <div id="menu1">
+    <div class="overlay-content">
+      <div class="form-group row-sm-2">
+        <label for="seq" class="col-md-2 col-form-label" name="seq"
+          >Sequence</label
+        >
+        <div class="col-md-6">
+          <input
+            type="name"
+            class="form-control"
+            id="seq"
+            placeholder="Sequence"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row-sm-2">
+        <label for="executors" class="col-md-2 col-form-label" name="executors"
+          >Executors</label
+        >
+        <div class="col-md-6">
+          <select class="form-control" id="executors">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row-sm-2">
+        <label for="driver" class="col-md-2 col-form-label"
+          >spark.props.spark.driver.memory</label
+        >
+        <!-- <div class="col-md-4">
+                  <select class="form-control" id="abc_select">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                  </select>
+              </div> -->
+        <div class="col-md-6">
+          <input
+            type="name"
+            class="form-control"
+            id="driver"
+            placeholder="8GB"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row-sm-2">
+        <label for="memory" class="col-md-2 col-form-label"
+          >spark.props.spark.executor.memory</label
+        >
+        <div class="col-md-6">
+          <input
+            type="name"
+            class="form-control"
+            id="memory"
+            placeholder="12GB"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row-sm-2">
+        <label for="cores" class="col-md-2 col-form-label"
+          >spark.props.spark.executor.cores</label
+        >
+
+        <div class="col-md-6">
+          <input type="name" class="form-control" id="cores" placeholder="2" />
+        </div>
+      </div>
+
+      <div class="form-group row-sm-2">
+        <label for="instances" class="col-md-2 col-form-label"
+          >spark.props.spark.executor.instances</label
+        >
+
+        <div class="col-md-6">
+          <input
+            type="name"
+            class="form-control"
+            id="instances"
+            placeholder="2"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row-sm-2">
+        <label for="shuffle" class="col-md-2 col-form-label"
+          >spark.props.spark.sql.shuffle.partitions</label
+        >
+
+        <div class="col-md-6">
+          <input
+            type="name"
+            class="form-control"
+            id="shuffle"
+            placeholder="200"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row-sm-2">
+        <label for="broadcast" class="col-md-2 col-form-label"
+          >spark.props.spark.sql.broadcastTimeout</label
+        >
+
+        <div class="col-md-6">
+          <input
+            type="name"
+            class="form-control"
+            id="broadcast"
+            placeholder="300"
+          />
+        </div>
+      </div>
+
+      <div class="form-group col">
+        <button type="button" class="btn button1 btn-primary">Update</button>
+        <button type="button" class="btn button1 btn-primary">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
